@@ -26,10 +26,13 @@ class FirstFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var count = 0
-        binding.button.setOnClickListener {
-            count++
-           binding.textView.text = count.toString()
+
+        binding.floatingBtn.setOnClickListener{
+            parentFragmentManager
+                .beginTransaction()
+                .replace(R.id.fragment_container, SecondFragment())
+                .addToBackStack("SecondFragment")
+                .commit()
         }
     }
 
