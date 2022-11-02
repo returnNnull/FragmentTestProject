@@ -7,29 +7,29 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import com.bam.fragmenttestproject.databinding.FragmentFirstBinding
 
 
 class FirstFragment : Fragment() {
 
-
+    lateinit var binding: FragmentFirstBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        return inflater.inflate(R.layout.fragment_first, container, false)
+        binding = FragmentFirstBinding.inflate(layoutInflater, container, false)
+        return binding.root
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val text = view.findViewById<TextView>(R.id.text)
-        val btn = view.findViewById<Button>(R.id.button)
         var count = 0
-        btn.setOnClickListener {
+        binding.button.setOnClickListener {
             count++
-            text.text = count.toString()
+           binding.textView.text = count.toString()
         }
     }
 
